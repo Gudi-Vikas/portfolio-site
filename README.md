@@ -1,48 +1,48 @@
 Portfolio Website
-This is a personal portfolio website for Vikas Gudi, showcasing his skills, projects, and experience.
+This is a personal portfolio website for Vikas Gudi, showcasing his skills, projects, and experience.<br/>
 
-About The Project
-This project is a responsive personal portfolio website built to showcase skills, projects, and provide a point of contact. The site features a clean and modern design with smooth animations and 3D elements.
+About The Project<br/>
+This project is a responsive personal portfolio website built to showcase skills, projects, and provide a point of contact. The site features a clean and modern design with smooth animations and 3D elements.<br/>
 
-Built With
-React
-Vite
-Spline
-HTML5
-CSS3
-JavaScript
+Built With<br/>
+React<br/>
+Vite<br/>
+Spline<br/>
+HTML5<br/>
+CSS3<br/>
+JavaScript<br/><br/>
 
-Getting Started
-To get a local copy up and running, follow these simple steps.
+Getting Started<br/>
+To get a local copy up and running, follow these simple steps.<br/><br/>
 
-Prerequisites
-You will need Node.js and npm installed on your machine.
+Prerequisites<br/>
+You will need Node.js and npm installed on your machine.<br/><br/>
 
-npm
-npm install npm@latest -g
+npm<br/>
+npm install npm@latest -g<br/><br/>
 
-Installation:
-Clone the repo
-git clone https://github.com/Gudi-Vikas/portfolio-site.git
+Installation:<br/>
+Clone the repo<br/>
+git clone https://github.com/Gudi-Vikas/portfolio-site.git<br/><br/>
 
-Navigate to the project directory
-cd portfolio-site
+Navigate to the project directory<br/>
+cd portfolio-site<br/><br/>
 
-Install NPM packages
-npm install
+Install NPM packages<br/>
+npm install<br/><br/>
 
-Run the development server
-npm run dev
+Run the development server<br/>
+npm run dev<br/><br/>
 
-Usage
-The website is designed to be a comprehensive portfolio. It includes the following sections:
+Usage<br/>
+The website is designed to be a comprehensive portfolio. It includes the following sections:<br/><br/>
 
-Home: A welcoming landing page with a 3D interactive element.
-About: A brief introduction about Vikas Gudi.
-Skills: A list of technical skills.
-Projects: A showcase of completed projects.
-Contact: A form to get in touch.
+Home: A welcoming landing page with a 3D interactive element.<br/>
+About: A brief introduction about Vikas Gudi.<br/>
+Skills: A list of technical skills.<br/>
+Projects: A showcase of completed projects.<br/>
+Contact: A form to get in touch.<br/><br/>
 
-Contact
-Vikas Gudi - http://www.linkedin.com/in/vikas-gudi
-Project Link: https://github.com/Gudi-Vikas/portfolio-site
+Contact<br/>
+Vikas Gudi - http://www.linkedin.com/in/vikas-gudi<br/>
+Project Link: https://github.com/Gudi-Vikas/portfolio-site<br/>
