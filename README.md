@@ -45,4 +45,4 @@ Contact: A form to get in touch.
 
 Contact
 Vikas Gudi - http://www.linkedin.com/in/vikas-gudi
-Project Link: https://github.com/Gudi-Vikas/portfolio-site[how do i use this in git hub - Google Docs.pdf
+Project Link: https://github.com/Gudi-Vikas/portfolio-site
