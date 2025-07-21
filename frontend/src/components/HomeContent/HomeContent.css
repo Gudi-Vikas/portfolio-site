@@ -1,0 +1,77 @@
+
+.author{
+    position: absolute;
+    font-family: gathernia,rock salt;
+    color: rgb(227, 224, 224);
+    font-size: 8vw;
+    line-height: 150px;
+    top: 230px;
+    left: 60px;
+    animation: fadeIn 2s ease-in;
+    z-index: 0;
+     pointer-events: all;
+}
+.left-slide-in {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideInLeft 1s ease-out forwards;
+   animation-delay: 0.3s;
+}
+
+
+
+.about{
+    font-family: Kodchasan;
+    position: absolute;
+    right: 30px;
+    top:32%;
+    width: 400px;
+    pointer-events: all;
+}
+
+.explore-button{
+    font-family: Kodchasan;
+    padding: 10px 28px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    color: black;
+    border: 1px solid white;
+    transition: .2s;
+    margin: 30px 25px 0 0;
+    font-size: medium;
+    border-radius: 10px;
+}
+
+.explore-button:hover{
+    transform: scale(1.1);
+}
+
+.right-slide-in {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideInRight 1.2s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+@media (max-width: 1200px) and (min-width: 931px) {
+  .author {
+    font-size: 5vw;
+    line-height: 90px;
+  }
+  .about {
+    width: 320px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 930px) {
+  .author {
+    font-size: 3.5vw;
+    line-height: 60px;
+  }
+  .about {
+    width: 220px;
+    font-size: 0.95rem;
+  }
+}
+

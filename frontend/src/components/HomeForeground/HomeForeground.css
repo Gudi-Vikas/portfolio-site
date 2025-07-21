@@ -1,0 +1,16 @@
+.home-foreground-container {
+    position: absolute;
+    z-index: 5;
+    color: white;
+    height: 100vh;
+    width: 100%;
+    pointer-events: none ;
+}
+
+.home-foreground-container button,
+.home-foreground-container input,
+.home-foreground-containery a,
+.home-foreground-container p,
+.home-foreground-container li {
+  pointer-events: all; 
+}

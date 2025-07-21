@@ -1,0 +1,32 @@
+.projects-page {
+  min-height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 0 0 0;
+}
+
+.projects-page.modal-open {
+  background: #11121600;
+}
+
+.projects-title {
+  color: #fff;
+  font-family: 'Kodchasan', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  margin-top: 2.2rem;
+}
+
+.projects-subtitle {
+  color: #bdbdbd;
+  font-family: 'Kodchasan', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 2.2rem;
+  text-align: center;
+  max-width: 600px;
+}

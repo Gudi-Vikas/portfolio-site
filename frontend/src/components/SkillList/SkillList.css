@@ -1,0 +1,41 @@
+.all-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem 3rem 2rem 3rem;
+  max-width: 1200px;
+  margin: 30px  auto;
+  
+}
+.skills-heading{
+  font-family: 'rock salt';
+  align-self: center;
+  position: absolute;
+  top: 20px;
+    animation: fadeIn 1s ease-out; 
+    color: aquamarine;
+}
+
+
+
+@media (max-width: 900px) {
+  .all-skills {
+    gap: 1.5rem;
+    padding: 0 1rem 1rem 1rem;
+    max-width: 700px;
+  }
+  .skills-heading{
+    position: relative;
+    top: 0px;
+  }
+}
+@media (max-width: 600px) {
+  .all-skills {
+    gap: 1rem;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    max-width: 98vw;
+    margin: 20px auto;
+  }
+}
+
+
