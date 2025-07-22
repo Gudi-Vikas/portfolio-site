@@ -3,12 +3,6 @@ import ProjectCard from '../ProjectCard/ProjectCard';
 import ProjectModal from '../ProjectModal/ProjectModal';
 import './ProjectsGrid.css';
 
-/**
- * ProjectsGrid displays a grid of ProjectCard components and handles modal state.
- * Props:
- *   projects: array of project objects
- *   setModalOpen: function to control background darkening in parent
- */
 const ProjectsGrid = ({ projects, setModalOpen }) => {
   const [selectedProject, setSelectedProject] = useState(null);
 

@@ -1,9 +1,6 @@
 import React from 'react'
 import './BackToHome.css'
 
-/**
- * BackToHome renders a button that navigates back in browser history.
- */
 const BackToHome = () => (
   <div className='back-container'>
     <button className='back-button' onClick={() => window.history.back()}>
