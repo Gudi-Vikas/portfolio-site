@@ -5,6 +5,7 @@ import Contact from './pages/Contact/Contact'
 import About from './pages/About/About'
 import Projects from './pages/Projects/Projects'
 import Skills from './pages/Skills/Skills'
+
 const App = () => {
   return (
     <div>

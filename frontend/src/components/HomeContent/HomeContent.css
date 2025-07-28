@@ -20,13 +20,59 @@
 
 
 
-.about{
-    font-family: Kodchasan;
+.headline {
+  display: block;
+  font-family: 'Kodchasan', 'Outfit', 'Roboto', 'Arial', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.09em;
+  margin-bottom: 0.1em;
+  text-shadow: 0 2px 16px #b3b3ff33, 0 1px 2px #000a;
+  animation: fadeInUp 1.1s cubic-bezier(.4,0,.2,1);
+}
+
+.about {
+    font-family: 'Kodchasan', 'Outfit', 'Roboto', 'Arial', sans-serif;
     position: absolute;
-    right: 30px;
-    top:32%;
+    right: 40px;
+    top:21%;
     width: 400px;
     pointer-events: all;
+    color: #eaeaff;
+    font-size: 1.08rem;
+    background: rgba(23, 23, 158, 0);
+    border-radius: 18px;
+    box-shadow: 0 0px 1px #d0d0df;
+    padding: 30px;
+    backdrop-filter: blur(2px);
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.skills::before {
+  content: '';
+}
+
+.skills span, .skills {
+  font-family: 'Kodchasan', 'Outfit', 'Roboto', 'Arial', sans-serif;
+  font-size: 1.01rem;
+  background: rgba(179, 179, 255, 0.13);
+  color: #b3b3ff;
+  border-radius: 12px;
+  padding: 4px 14px;
+  margin-right: 6px;
+  margin-bottom: 4px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  box-shadow: 0 1px 6px #b3b3ff22;
+  display: inline-block;
 }
 
 .explore-button{
@@ -61,6 +107,7 @@
   .about {
     width: 320px;
     font-size: 1rem;
+    padding: 20px 16px 20px 16px;
   }
 }
 
@@ -72,6 +119,14 @@
   .about {
     width: 220px;
     font-size: 0.95rem;
+    padding: 12px 8px 12px 8px;
+  }
+  .headline {
+    font-size: 1rem;
+  }
+  .skills span, .skills {
+    font-size: 0.85rem;
+    padding: 3px 8px;
   }
 }
 

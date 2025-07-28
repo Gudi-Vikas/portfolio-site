@@ -1,5 +1,5 @@
 import React from 'react'
-import './skills.css'
+import './Skills.css'
 import SkillList from '../../components/SkillList/SkillList'
 const Skills = () => (
   <>
