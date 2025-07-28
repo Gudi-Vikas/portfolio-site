@@ -11,14 +11,29 @@
 @media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 1.5rem;
     max-width: 98vw;
   }
 }
+
 @media (max-width: 600px) {
   .projects-grid {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+    gap: 2rem;
     max-width: 99vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-grid {
+    gap: 1.8rem;
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 360px) {
+  .projects-grid {
+    gap: 1.5rem;
+    max-width: 92vw;
   }
 } 

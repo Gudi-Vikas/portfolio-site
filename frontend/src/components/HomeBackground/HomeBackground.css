@@ -13,6 +13,26 @@
   pointer-events: auto; 
 }
 
+/* Mobile optimizations for Spline */
+@media (max-width: 768px) {
+  .robot {
+    /* Ensure Spline renders properly on mobile */
+    min-height: 100vh;
+    min-width: 100vw;
+    /* Reduce quality for better performance */
+    image-rendering: optimizeSpeed;
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+@media (max-width: 480px) {
+  .robot {
+    /* Further optimizations for small screens */
+    transform: scale(0.9);
+    transform-origin: center center;
+  }
+}
+
 /* Spline Fallback for Mobile and Low-end Devices */
 .spline-fallback {
   width: 100%;
