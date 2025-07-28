@@ -379,6 +379,10 @@
     .contact-icon { width: 40px; height: 40px; }
     .social-btn { width: 40px; height: 40px; }
     
+    .connect-section {
+        margin-top: 20px;
+    }
+    
     .form-group input,
     .form-group textarea {
         padding: 12px;
@@ -412,6 +416,10 @@
     .contact-item { gap: 10px; }
     .contact-icon { width: 35px; height: 35px; }
     .social-btn { width: 35px; height: 35px; }
+    
+    .connect-section {
+        margin-top: 25px;
+    }
     
     .contact-icon svg,
     .social-btn svg { width: 18px; height: 18px; }
