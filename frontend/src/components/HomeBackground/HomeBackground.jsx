@@ -13,7 +13,10 @@ const HomeBackground = () => {
   useEffect(() => {
     // Check device capabilities
     const checkDeviceCapabilities = () => {
-      // Check for very low-end devices only
+      // Check for mobile devices
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768
+      
+      // Check for very low-end devices
       const isVeryLowEnd = 
         navigator.hardwareConcurrency <= 1 || // 1 or fewer CPU cores
         navigator.deviceMemory <= 1 // 1GB or less RAM
@@ -32,13 +35,13 @@ const HomeBackground = () => {
         setIsSlowConnection(isVerySlow)
       }
 
-      // Determine if we should load Spline (allow on all devices except very low-end)
-      const shouldLoad = !isVeryLowEnd && !isVerySlow
+      // Determine if we should load Spline (disable on mobile and low-end devices)
+      const shouldLoad = !isMobile && !isVeryLowEnd && !isVerySlow
       setShouldLoadSpline(shouldLoad)
 
       // Set appropriate load time based on device capabilities
-      if (isVeryLowEnd || isVerySlow) {
-        setSplineLoadTime(1000) // Very fast for low-end devices
+      if (isMobile || isVeryLowEnd || isVerySlow) {
+        setSplineLoadTime(1000) // Very fast for mobile and low-end devices
       } else {
         setSplineLoadTime(2000) // Normal load time
       }
