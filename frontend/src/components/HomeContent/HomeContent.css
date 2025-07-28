@@ -33,7 +33,7 @@
 }
 
 .about {
-    font-family: 'Kodchasan', 'Outfit', 'Roboto', 'Arial', sans-serif;
+    font-family: 'Kodchasan', 'Outfit', 'Roboto', 'Roboto', 'Arial', sans-serif;
     position: absolute;
     right: 40px;
     top:21%;
@@ -305,6 +305,7 @@
     width: 220px;
     font-size: 0.95rem;
     padding: 12px 8px 12px 8px;
+    text-align: center;
   }
   .headline {
     font-size: 1rem;

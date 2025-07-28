@@ -13,21 +13,50 @@
   pointer-events: auto; 
 }
 
-/* Mobile optimizations for Spline */
-@media (max-width: 768px) {
+/* Responsive optimizations for Spline */
+@media (max-width: 1200px) {
   .robot {
-    /* Ensure Spline renders properly on mobile */
+    /* Large tablet optimizations */
     min-height: 100vh;
     min-width: 100vw;
-    /* Reduce quality for better performance */
     image-rendering: optimizeSpeed;
     image-rendering: -webkit-optimize-contrast;
   }
 }
 
+@media (max-width: 1024px) {
+  .robot {
+    /* Tablet optimizations */
+    min-height: 100vh;
+    min-width: 100vw;
+    image-rendering: optimizeSpeed;
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+@media (max-width: 768px) {
+  .robot {
+    /* Mobile optimizations */
+    min-height: 100vh;
+    min-width: 100vw;
+    image-rendering: optimizeSpeed;
+    image-rendering: -webkit-optimize-contrast;
+    transform: scale(0.98);
+    transform-origin: center center;
+  }
+}
+
 @media (max-width: 480px) {
   .robot {
-    /* Further optimizations for small screens */
+    /* Small mobile optimizations */
+    transform: scale(0.95);
+    transform-origin: center center;
+  }
+}
+
+@media (max-width: 360px) {
+  .robot {
+    /* Very small mobile optimizations */
     transform: scale(0.9);
     transform-origin: center center;
   }
