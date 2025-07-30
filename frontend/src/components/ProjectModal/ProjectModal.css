@@ -59,10 +59,36 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   animation: modalSlideIn 0.6s var(--ease-bounce);
   transform: translateY(0);
+}
+
+/* Disable custom scrollbar for modal to prevent unnecessary scrollbars */
+.project-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.project-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.project-modal::-webkit-scrollbar-thumb {
+  background: rgba(184, 243, 253, 0.3);
+  border-radius: 4px;
+  border: none;
+  box-shadow: none;
+}
+
+.project-modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 243, 253, 0.5);
+  box-shadow: none;
+  transform: none;
+}
+
+.project-modal::-webkit-scrollbar-thumb:active {
+  background: rgba(184, 243, 253, 0.6);
+  box-shadow: none;
 }
 
 @keyframes modalSlideIn {
@@ -151,6 +177,31 @@
   min-height: 0;
   -webkit-overflow-scrolling: touch;
   height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(184, 243, 253, 0.3) transparent;
+}
+
+/* Custom scrollbar for modal content */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(184, 243, 253, 0.2);
+  border-radius: 3px;
+  border: none;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 243, 253, 0.4);
+}
+
+.modal-content::-webkit-scrollbar-thumb:active {
+  background: rgba(184, 243, 253, 0.5);
 }
 
 .modal-left {
