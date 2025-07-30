@@ -13,8 +13,13 @@ const HomeBackground = () => {
   useEffect(() => {
     // Check device capabilities
     const checkDeviceCapabilities = () => {
-      // Check for mobile devices
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768
+      // Enhanced mobile detection
+      const isMobile = 
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+        window.innerWidth <= 768 ||
+        window.innerHeight <= 768 ||
+        ('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0)
       
       // Check for very low-end devices
       const isVeryLowEnd = 
@@ -35,7 +40,7 @@ const HomeBackground = () => {
         setIsSlowConnection(isVerySlow)
       }
 
-      // Determine if we should load Spline (disable on mobile and low-end devices)
+      // Completely disable Spline on mobile devices
       const shouldLoad = !isMobile && !isVeryLowEnd && !isVerySlow
       setShouldLoadSpline(shouldLoad)
 
@@ -53,7 +58,17 @@ const HomeBackground = () => {
     // Check again after a short delay to allow for network detection
     const timer = setTimeout(checkDeviceCapabilities, 1000)
 
-    return () => clearTimeout(timer)
+    // Add resize listener to handle orientation changes
+    const handleResize = () => {
+      checkDeviceCapabilities()
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   // Fallback component for when Spline is not loaded

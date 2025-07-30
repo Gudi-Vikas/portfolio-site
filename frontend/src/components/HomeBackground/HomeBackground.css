@@ -71,6 +71,8 @@
   justify-content: center;
   background: transparent;
   pointer-events: none;
+  position: relative;
+  z-index: 1;
 }
 
 .fallback-content {
@@ -89,6 +91,8 @@
   border-radius: 50%;
   animation: spin 1s linear infinite;
   opacity: 0.6;
+  position: relative;
+  z-index: 2;
 }
 
 @keyframes spin {
