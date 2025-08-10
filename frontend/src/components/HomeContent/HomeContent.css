@@ -1,15 +1,62 @@
 
-.author{
+.left-hero{
+    font-family: 'Outfit', 'Roboto', 'Roboto', 'Arial', sans-serif;
     position: absolute;
-    font-family: gathernia,rock salt;
-    color: rgb(227, 224, 224);
-    font-size: 8vw;
-    line-height: 150px;
-    top: 230px;
     left: 60px;
-    animation: fadeIn 2s ease-in;
-    z-index: 0;
-     pointer-events: all;
+    top:25%;
+    width: 350px;
+    pointer-events: all;
+    color: #eaeaf4;
+    font-size: 1.08rem;
+    background: rgba(23, 23, 158, 0);
+    border-radius: 18px;
+    box-shadow: 0 0px 1px #d0d0df;
+    padding: 30px;
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.left-hero h3{
+  font-weight: lighter;
+  text-align: center;
+}
+
+.hero-details{
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  gap: 40px;
+  color: white ;
+  font-size: 1.3rem;
+}
+
+.hero-skills{
+  font-weight: 200;
+  text-align: center;
+}
+
+.hero-details img{
+  width:auto;
+  height: 100px;
+  border-radius: 10px;
+}
+
+
+.hero-links{
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+.hero-links a{
+  border: 1px solid rgb(183, 181, 181);
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: all .3s ease;
+}
+.hero-links a:hover{
+  background-color: rgba(155, 155, 155, 0.479);
 }
 .left-slide-in {
   opacity: 0;

@@ -9,10 +9,11 @@ import mongodbLogo from './images/mongodb.png';
 import mongodbAtlasLogo from './images/mongodb-atlas.png';
 import splineLogo from './images/spline.png';
 import postmanLogo from './images/postman.png';
-import gitLogo from './images/git.png';
+import  gitLogo from './images/git.png';
 import githubLogo from './images/github.png';
 import vscodeLogo from './images/vscode.png';
 import figmaLogo from './images/figma.png';
+import resumeLogo from './images/resume.png'
 
 import portfolio from './images/portfolio.png'
 import ecommerce from './images/ecommerce.png'
@@ -27,7 +28,6 @@ import gmailLogo from './images/gmail.png'
 import githubWhite from './images/github-white.png'
 
 export  const socialMediaLogo = [{logo:instaLogo, link:"https://www.instagram.com/vikas_gudi?igsh=YmJ5MmtiNXVjN204"},,{logo:linkedInLogo,link:"https://www.linkedin.com/in/vikas-gudi"},{logo:gmailLogo,link:"mailto:vikasgudii@gmail.com"},{logo:githubWhite,link:"https://github.com/Gudi-Vikas"}]
-
 export const frontendLogo = [
   { name: 'HTML', logo: htmlLogo, link: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
   { name: 'CSS', logo: cssLogo, link: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
@@ -40,6 +40,11 @@ export const backendLogo = [
   { name: 'ExpressJs', logo: expressjsLogo, link: 'https://expressjs.com/' },
   { name: 'MongoDb', logo: mongodbLogo, link: 'https://www.mongodb.com/' },
 ];
+
+
+export const gitHubLogo = githubLogo;
+export const linkedIn = linkedInLogo;
+export const ResumeLogo = resumeLogo;
 
 export const toolsLogo = [
   { name: 'Git', logo: gitLogo, link: 'https://git-scm.com/' },

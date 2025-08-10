@@ -1,8 +1,9 @@
 import React from 'react'
 import './About.css'
 import { socialMediaLogo } from '../../assets/assets'
+import { useNavigate } from "react-router-dom";
 const About = () => {
-
+  const navigate = useNavigate();
   return (
     <div className="about-container">
       <div className="about-parent-card">
@@ -27,12 +28,12 @@ const About = () => {
             </p>
             <div className="right-top-button-container">
               <button className="resume-download animate-btn-1">Download Resume</button>
-              <button className="resume-download animate-btn-2">Get in Touch </button>
+              <button className="resume-download animate-btn-2" onClick={() => navigate("/contact")} >Get in Touch </button>
             </div>
           </div>
           <div className="about-right-bottom">
               {socialMediaLogo.map((each, idx) => (
-                <a href={each.link} className='social-media-icons-link' target='_blank'><img src={each.logo}  className={`social-media-icons animate-icon-${idx+1}`} alt="social-media" key={idx} /></a>
+                <a href={each.link}  className='social-media-icons-link' target='_blank'><img src={each.logo}  className={`social-media-icons animate-icon-${idx+1}`} alt="social-media" key={idx} /></a>
               ))}
           </div>
         </div>
