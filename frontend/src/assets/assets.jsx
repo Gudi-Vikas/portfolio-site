@@ -42,9 +42,6 @@ export const backendLogo = [
 ];
 
 
-export const gitHubLogo = githubLogo;
-export const linkedIn = linkedInLogo;
-export const ResumeLogo = resumeLogo;
 
 export const toolsLogo = [
   { name: 'Git', logo: gitLogo, link: 'https://git-scm.com/' },
@@ -56,7 +53,13 @@ export const toolsLogo = [
   { name: 'Figma', logo: figmaLogo, link: 'https://figma.com/' },
 ];
 
+export const gitHubLogo = githubLogo;
+export const linkedIn = linkedInLogo;
+export const ResumeLogo = resumeLogo;
 // --- Projects Data ---
+
+
+
 export const projects = [
   {
     title: 'Portfolio Website',

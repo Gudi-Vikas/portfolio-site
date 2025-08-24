@@ -6,10 +6,56 @@
   align-items: center;
   justify-content: flex-start;
   padding: 40px 0 0 0;
+  position: relative;
 }
 
 .projects-page.modal-open {
   background: #11121600;
+}
+
+.refetch-button {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.refetch-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.refetch-button:active {
+    transform: scale(0.95);
+}
+
+.refetch-button.refetching svg {
+    animation: spin 1s linear infinite;
+}
+
+.refetch-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .projects-title {
@@ -29,4 +75,79 @@
   margin-bottom: 2.2rem;
   text-align: center;
   max-width: 600px;
+}
+
+/* Error and loading states */
+.error-message {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid #ff6b6b;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  font-family: 'Kodchasan', sans-serif;
+  font-size: 1.1rem;
+}
+
+.loading-message {
+  color: #74b9ff;
+  background: rgba(116, 185, 255, 0.1);
+  border: 1px solid #74b9ff;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  font-family: 'Kodchasan', sans-serif;
+  font-size: 1.1rem;
+}
+
+.no-projects-message {
+  color: #a29bfe;
+  background: rgba(162, 155, 254, 0.1);
+  border: 1px solid #a29bfe;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  font-family: 'Kodchasan', sans-serif;
+  font-size: 1.1rem;
+}
+
+/* Mobile responsive styles for refetch button */
+@media (max-width: 900px) {
+  .refetch-button {
+    top: 70px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 600px) {
+  .refetch-button {
+    top: 60px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .refetch-button svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .refetch-button {
+    top: 55px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .refetch-button svg {
+    width: 12px;
+    height: 12px;
+  }
 }
