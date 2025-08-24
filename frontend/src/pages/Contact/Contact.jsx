@@ -1,8 +1,59 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Contact.css'
 import { socialMediaLogo } from '../../assets/assets'
 
-const Contact = () => {
+const Contact = ({url}) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+  const [feedbackVisible, setFeedbackVisible] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch(`${url}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: data.message || 'Message sent successfully!' });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFeedbackVisible(true);
+        setTimeout(() => setFeedbackVisible(false), 1000);
+      } else {
+        setSubmitStatus({ type: 'error', message: data.message || 'Failed to send message. Please try again.' });
+        setFeedbackVisible(true);
+        setTimeout(() => setFeedbackVisible(false), 1000);
+      }
+    } catch (error) {
+      setSubmitStatus({ type: 'error', message: 'Network error. Please check your connection and try again.' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="contact-container">
       <div className="contact-card">
@@ -62,7 +113,13 @@ const Contact = () => {
         <div className="contact-right">
           <h2 className="form-title">Send me a message</h2>
           
-          <form className="contact-form">
+          {feedbackVisible && submitStatus && (
+            <div className={`submit-status ${submitStatus.type}`}>
+              {submitStatus.message}
+            </div>
+          )}
+          
+          <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Your Name</label>
               <input 
@@ -70,6 +127,8 @@ const Contact = () => {
                 id="name" 
                 name="name" 
                 placeholder="John Doe"
+                value={formData.name}
+                onChange={handleInputChange}
                 required 
               />
             </div>
@@ -81,6 +140,8 @@ const Contact = () => {
                 id="email" 
                 name="email" 
                 placeholder="john@example.com"
+                value={formData.email}
+                onChange={handleInputChange}
                 required 
               />
             </div>
@@ -92,6 +153,8 @@ const Contact = () => {
                 id="subject" 
                 name="subject" 
                 placeholder="Project Inquiry"
+                value={formData.subject}
+                onChange={handleInputChange}
                 required 
               />
             </div>
@@ -103,12 +166,18 @@ const Contact = () => {
                 name="message" 
                 placeholder="Tell me about your project or inquiry..."
                 rows="5"
+                value={formData.message}
+                onChange={handleInputChange}
                 required 
               ></textarea>
             </div>
             
-            <button type="submit" className="send-btn">
-              <span>Send Message</span>
+            <button 
+              type="submit" 
+              className="send-btn"
+              disabled={isSubmitting}
+            >
+              <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/>
               </svg>

@@ -8,6 +8,7 @@ import Projects from './pages/Projects/Projects'
 import Skills from './pages/Skills/Skills'
 import Footer from './components/Footer/Footer'
 
+
 const App = () => {
   const url = "http://localhost:4000"
   
