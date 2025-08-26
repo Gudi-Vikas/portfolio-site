@@ -10,7 +10,7 @@ const projectUploads = makeUploader("/projects")
 projectRouter.get("/allprojects", projectListHandler)
 projectRouter.get("/project/:id", findDataById)
 
-// Public admin routes (auth removed)
+// Admin routes
 projectRouter.post("/add", projectUploads.single("image"), projectAddHandler)
 projectRouter.put("/edit", projectUploads.single("image"), projectEditHandler)
 projectRouter.delete("/project/:id", projectRemoveHandler)

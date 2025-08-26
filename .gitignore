@@ -9,7 +9,6 @@ node_modules/
 dist/
 build/
 
-# ignore entire admin folder
-
+# ignore entire admin folder for git
 admin/
 

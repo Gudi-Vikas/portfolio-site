@@ -34,7 +34,7 @@ const Skills = ({url}) => {
     return (
       <div className='skill-container'>
         <h1 className='skills-heading'>Skills:</h1>
-        <p>Loading skills...</p>
+        <p className='skill-load'>Loading skills...</p>
       </div>
     );
   }

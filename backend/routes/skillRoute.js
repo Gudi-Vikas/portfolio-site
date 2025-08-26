@@ -9,7 +9,7 @@ const uploadSkills = makeUploader("skills")
 // Public route
 skillRouter.get("/allskills", allSkills)
 
-// Public admin routes (auth removed)
+// Admin routes
 skillRouter.post("/add", uploadSkills.single("image"), skillAdd)
 skillRouter.post("/remove", skillRemove)
 

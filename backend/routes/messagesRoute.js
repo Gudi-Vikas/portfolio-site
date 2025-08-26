@@ -7,7 +7,7 @@ const messagesRouter = express.Router()
 messagesRouter.get("/messages", getMessages)
 messagesRouter.post("/contact", createMessage)
 
-// Public admin routes (auth removed)
+// Admin routes
 messagesRouter.delete("/messages/:id", deleteMessage)
 messagesRouter.patch("/messages/:id/status", updateMessageStatus)
 
