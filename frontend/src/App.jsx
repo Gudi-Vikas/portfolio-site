@@ -10,7 +10,7 @@ import Footer from './components/Footer/Footer'
 
 
 const App = () => {
-  const url = "http://localhost:4000"
+  const url = "https://vikasgudi.up.railway.app"
   
   // Validate URL format
   if (!url || !url.startsWith('http')) {

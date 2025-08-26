@@ -10,5 +10,4 @@ dist/
 build/
 
 # ignore entire admin folder
-admin/
 
