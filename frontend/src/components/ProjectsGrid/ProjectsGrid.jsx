@@ -24,7 +24,7 @@ const ProjectsGrid = ({ projects, setModalOpen, fetchProjects, url }) => {
         {projects.map((project, idx) => (
           <ProjectCard
             key={project._id || idx}
-            image={url + project.image}
+            image={`${url}${project.image}`}
             title={project.title}
             desc={project.description}
             onSelect={() => openModal({ ...project, idx })}

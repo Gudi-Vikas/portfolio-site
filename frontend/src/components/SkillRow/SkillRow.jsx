@@ -15,13 +15,13 @@ const SkillRow = ({ title, skills, url }) => (
             key={skill._id}
           >
             <div className='skill-card'>
-              <img src={url + skill.image} alt={skill.name} />
+              <img src={`${url}${skill.image}`} alt={skill.name} />
               <p>{skill.name}</p>
             </div>
           </a>
         ) : (
           <div className='skill-card' key={skill._id}>
-            <img src={url + skill.image} alt={skill.name} />
+            <img src={`${url}${skill.image}`} alt={skill.name} />
             <p>{skill.name}</p>
           </div>
         )

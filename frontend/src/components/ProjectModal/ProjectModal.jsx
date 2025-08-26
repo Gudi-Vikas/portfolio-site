@@ -3,7 +3,7 @@ import './ProjectModal.css';
 
 const ProjectModal = ({ project, onClose,url }) => {
   // Handle case where project might not have all properties
-  const projectImage = url + project.image || project.src || '';
+  const projectImage = `${url}${project.image}` || project.src || '';
   const projectTitle = project.title || 'Untitled Project';
   const projectDesc = project.desc || project.description || 'No description available';
   const projectTech = project.technologies || ['React', 'Vite', 'Node.js'];

@@ -1,2 +1,6 @@
-backend/
-admin/
+# backend/
+# admin/
+
+# Environment variables
+backend/.env
+.env
