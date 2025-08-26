@@ -3,13 +3,12 @@ import axios from 'axios';
 import ProjectsGrid from '../../components/ProjectsGrid/ProjectsGrid';
 import './Projects.css';
 
-const Projects = () => {
+const Projects = ({url}) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  const url = "http://localhost:4000";
 
   useEffect(() => {
     fetchProjects();

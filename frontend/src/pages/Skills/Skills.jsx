@@ -3,12 +3,11 @@ import axios from 'axios'
 import './Skills.css'
 import SkillList from '../../components/SkillList/SkillList'
 
-const Skills = () => {
+const Skills = ({url}) => {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  const url = "http://localhost:4000";
 
   useEffect(() => {
     fetchSkills();
