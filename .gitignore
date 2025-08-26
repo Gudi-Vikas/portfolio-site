@@ -1,5 +1,14 @@
 
-# Environment variables
+# env files
+*.env
+
+# dependencies
+node_modules/
+
+# build files
+dist/
+build/
+
+# ignore entire admin folder
 admin/
-.env
 
