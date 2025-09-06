@@ -72,7 +72,8 @@
   background: transparent;
   pointer-events: none;
   position: relative;
-  z-index: 1;
+  z-index: 99999999;
+  pointer-events: all;
 }
 
 .fallback-content {
