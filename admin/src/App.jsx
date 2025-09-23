@@ -13,12 +13,12 @@ import { useAuth } from './contexts/AuthContext.jsx';
 
 const App = () => {
   //for testing
-  const url ='http://localhost:4000';
+  // const url ='http://localhost:4000';
 
   // for deployment
 
-  //const url =   'https://vikasgudi.up.railway.app'
-  
+  const url =   'https://portfolio-site-35zd.onrender.com'
+
   const { isAuthed } = useAuth();
   const RequireAuth = ({ children }) => (isAuthed ? children : <Navigate to="/login" replace />);
   return (

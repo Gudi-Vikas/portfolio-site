@@ -10,7 +10,7 @@ import Footer from './components/Footer/Footer'
 
 
 const App = () => {
-  const url = "https://vikasgudi.up.railway.app" 
+  const url = "https://portfolio-site-35zd.onrender.com" 
 
   //for testing locally
   // const url = "http://localhost:4000"
