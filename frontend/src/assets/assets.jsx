@@ -15,6 +15,12 @@ import vscodeLogo from './images/vscode.png';
 import figmaLogo from './images/figma.png';
 import resumeLogo from './images/resume.png'
 
+import  resumePdf  from "./resume.pdf";
+
+export const resume = resumePdf
+
+
+
 import portfolio from './images/portfolio.png'
 import ecommerce from './images/ecommerce.png'
 import fitness from './images/fitness.png'

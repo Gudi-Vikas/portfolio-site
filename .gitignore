@@ -10,5 +10,5 @@ dist/
 build/
 
 # ignore entire admin folder for git
-admin/
+
 

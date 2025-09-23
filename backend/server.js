@@ -7,6 +7,7 @@ import { connectDB } from "./config/db.js";
 import skillRouter from "./routes/skillRoute.js";
 import projectRouter from "./routes/projectRoute.js";
 import messagesRouter from "./routes/messagesRoute.js";
+import authRouter from "./routes/authRoute.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -22,6 +23,7 @@ app.use("/uploads", express.static("uploads"));
 connectDB();
 
 // public routes
+app.use("/api/auth", authRouter);
 app.use("/api/skills", skillRouter);
 app.use("/api/projects", projectRouter);
 app.use("/api", messagesRouter);

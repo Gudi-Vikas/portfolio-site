@@ -20,7 +20,7 @@ const HomeBackground = () => {
       
       // Enhanced mobile detection - less restrictive
       const isMobile = 
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && 
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
         window.innerWidth <= 768
       
       // Check for very low-end devices - more lenient

@@ -1,10 +1,11 @@
 import React from 'react'
 import './About.css'
-import { socialMediaLogo } from '../../assets/assets'
+import { resume, socialMediaLogo } from '../../assets/assets'
 import { useNavigate } from "react-router-dom";
 const About = () => {
   const navigate = useNavigate();
   return (
+    
     <div className="about-container">
       <div className="about-parent-card">
         <div className="about-left about-child-card animate-left-panel">
@@ -27,7 +28,7 @@ const About = () => {
               Outside of tech, I love watching movies, creating art, and travelling — these passions keep me inspired, creative, and constantly learning from different perspectives.
             </p>
             <div className="right-top-button-container">
-              <button className="resume-download animate-btn-1">Download Resume</button>
+              <button className="resume-download animate-btn-1"><a target='_blank' href={resume}>Download Resume</a></button>
               <button className="resume-download animate-btn-2" onClick={() => navigate("/contact")} >Get in Touch </button>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './HomeContent.css'
 import { Link } from 'react-router-dom'
+import { resume } from '../../assets/assets';
 
 
 const HomeContent = () => {
@@ -66,7 +67,7 @@ const HomeContent = () => {
                     <span>• Full-Stack Developer   •  React  <br /> • Node • MongoDB  • ML</span>
                 </div>
                 <div className="hero-links">
-                    <a target="_blank" href="">Resume</a>
+                    <a target="_blank" href={resume}>Resume</a>
                     <a target="_blank" href="https://github.com/Gudi-Vikas">GitHub</a>
                     <a target="_blank" href="https://www.linkedin.com/in/vikas-gudi">linkedIn</a>
                 </div>

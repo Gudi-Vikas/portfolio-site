@@ -399,7 +399,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .contact-container { padding: 10px; }
+    .contact-container { padding: 10px; margin-top: 60px }
     
     .contact-card {
         width: 95vw;
