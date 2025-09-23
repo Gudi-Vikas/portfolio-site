@@ -145,7 +145,17 @@ const Skills = ({ url }) => {
                 </form>
             </div>
             <div className='list-card'>
-                <p className='section-title'>Skills List</p>
+                <div className='section-header'>
+                    <p className='section-title'>Skills List</p>
+                    <button 
+                        className='reload-btn' 
+                        onClick={fetchList}
+                        disabled={loading}
+                        title="Refresh skills list"
+                    >
+                        {loading ? '⟳' : '↻'} Reload
+                    </button>
+                </div>
                 <div className='list-table'>
                     <div className='list-table-format title'>
                         <b>Image</b>
