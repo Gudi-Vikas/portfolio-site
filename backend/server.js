@@ -14,10 +14,36 @@ const PORT = process.env.PORT || 4000;
 
 // Basic middleware
 app.use(express.json());
-app.use(cors());
 
-// Static files
-app.use("/uploads", express.static("uploads"));
+// CORS with env-configurable origins and proper headers
+const corsOrigins = (process.env.CORS_ORIGINS || "").split(",").map(s => s.trim()).filter(Boolean);
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true); // allow non-browser or same-origin
+      if (corsOrigins.length === 0 || corsOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+// Explicitly handle preflight
+app.options("*", cors());
+
+// Static files (avoid stale cached images)
+app.use(
+  "/uploads",
+  express.static("uploads", {
+    setHeaders: (res) => {
+      res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+      res.setHeader("Pragma", "no-cache");
+      res.setHeader("Expires", "0");
+    },
+  })
+);
 
 // DB
 connectDB();
