@@ -4,9 +4,10 @@ export const getMessages = async (req, res) => {
     try {
         // Sort by createdAt in descending order (newest first)
         const messages = await messageModel.find({}).sort({ createdAt: -1 });
-        res.json(messages);
+        res.json({ success: true, data: messages });
     } catch (error) {
-        res.status(500).json({ message: 'Server Error' });
+        console.error('Error fetching messages:', error);
+        res.status(500).json({ success: false, message: 'Server Error' });
     }
 };
 
@@ -14,7 +15,7 @@ export const createMessage = async (req, res) => {
     const { name, email, subject, message } = req.body;
 
     if (!name || !email || !subject || !message) {
-        return res.status(400).json({ message: 'Please fill out all fields.' });
+        return res.status(400).json({ success: false, message: 'Please fill out all fields.' });
     }
 
     try {
@@ -26,9 +27,10 @@ export const createMessage = async (req, res) => {
         });
 
         await newMessage.save();
-        res.status(201).json({ message: 'Message sent successfully!' });
+        res.status(201).json({ success: true, message: 'Message sent successfully!' });
     } catch (error) {
-        res.status(500).json({ message: 'Server Error' });
+        console.error('Error creating message:', error);
+        res.status(500).json({ success: false, message: 'Server Error' });
     }
 };
 
@@ -47,12 +49,13 @@ export const updateMessageStatus = async (req, res) => {
             }
             
             const updatedMessage = await message.save();
-            res.json(updatedMessage);
+            res.json({ success: true, data: updatedMessage });
         } else {
-            res.status(404).json({ message: 'Message not found' });
+            res.status(404).json({ success: false, message: 'Message not found' });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Server Error' });
+        console.error('Error updating message status:', error);
+        res.status(500).json({ success: false, message: 'Server Error' });
     }
 };
 
@@ -63,11 +66,12 @@ export const deleteMessage = async (req, res) => {
 
         if (message) {
             await message.deleteOne();
-            res.json({ message: 'Message removed' });
+            res.json({ success: true, message: 'Message removed' });
         } else {
-            res.status(404).json({ message: 'Message not found' });
+            res.status(404).json({ success: false, message: 'Message not found' });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Server Error' });
+        console.error('Error deleting message:', error);
+        res.status(500).json({ success: false, message: 'Server Error' });
     }
 };
