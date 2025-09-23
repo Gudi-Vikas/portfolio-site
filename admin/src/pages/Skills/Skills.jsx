@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 const Skills = ({ url }) => {
     //add start
     const [image, setImage] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false)
     const [data, setData] = useState({
         category: "",
         name: "",
@@ -22,30 +23,42 @@ const Skills = ({ url }) => {
 
     const onSubmitHandler = async (event) => {
         event.preventDefault()
-        const formData = new FormData()
-        formData.append("name", data.name)
-        formData.append("link", data.link)
-        formData.append("category", data.category)
-        formData.append("image", image)
-        const response = await axios.post(`${url}/api/skills/add`, formData, { headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')||''}` } })
-        if (response.data.success) {
-            setData({
-                name: "",
-                link: "",
-                category: ""
-
-            })
-            setImage(false)
-            toast.success(response.data.message)
-            await fetchList() // Refresh the list after adding
-
-        } else {
-            setImage(false)
-            toast.error(response.data.message)
-            console.log(response.data.message);
-
+        
+        if (isSubmitting) return; // Prevent double submission
+        
+        setIsSubmitting(true)
+        
+        try {
+            const formData = new FormData()
+            formData.append("name", data.name)
+            formData.append("link", data.link)
+            formData.append("category", data.category)
+            formData.append("image", image)
+            
+            const response = await axios.post(`${url}/api/skills/add`, formData, { headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')||''}` } })
+            
+            if (response.data.success) {
+                setData({
+                    name: "",
+                    link: "",
+                    category: ""
+                })
+                setImage(false)
+                toast.success(response.data.message)
+                await fetchList() // Refresh the list after adding
+            } else {
+                setImage(false)
+                toast.error(response.data.message)
+                console.log(response.data.message);
+            }
+        } catch (err) {
+            console.error("Add skill error:", err);
+            const errorMessage = err.response?.data?.message || "Network error. Please check your connection.";
+            toast.error(errorMessage);
+            setImage(false);
+        } finally {
+            setIsSubmitting(false);
         }
-
     }
 
     //add end
@@ -141,21 +154,13 @@ const Skills = ({ url }) => {
                             onChange={onChangeHandler}
                         />
                     </div>
-                    <button type='submit' onClick={onSubmitHandler} className='add-btn'>Add</button>
+                    <button type='submit' className='add-btn' disabled={isSubmitting}>
+                        {isSubmitting ? "Adding..." : "Add"}
+                    </button>
                 </form>
             </div>
             <div className='list-card'>
-                <div className='section-header'>
-                    <p className='section-title'>Skills List</p>
-                    <button 
-                        className='reload-btn' 
-                        onClick={fetchList}
-                        disabled={loading}
-                        title="Refresh skills list"
-                    >
-                        {loading ? '⟳' : '↻'} Reload
-                    </button>
-                </div>
+                <p className='section-title'>Skills List</p>
                 <div className='list-table'>
                     <div className='list-table-format title'>
                         <b>Image</b>
