@@ -30,7 +30,6 @@ const projectAddHandler = async (req, res) => {
 }
 
 const projectEditHandler = async (req, res) => {
-
     try {
         const { id, ...updateData } = req.body;
 
@@ -53,30 +52,43 @@ const projectEditHandler = async (req, res) => {
             }
         }
 
-        // delete old image if it exists and new image is uploaded
+        // Handle image update if new file is uploaded
         if (req.file) {
+            // Delete old image if it exists
             if (project.image) {
-                const oldImagePath = path.join(process.cwd(), project.image);//process.cwd returns working directory of nodejs
+                const oldImagePath = path.join(process.cwd(), 'public', project.image);
                 if (fs.existsSync(oldImagePath)) {
                     fs.unlinkSync(oldImagePath);
                 }
             }
             updateData.image = `/uploads/projects/${req.file.filename}`;
+        } else {
+            // Preserve the existing image path if no new image is uploaded
+            updateData.image = project.image;
         }
 
-        const updatedProject = await projectModel.findByIdAndUpdate(id, updateData, {
-            new: true,
-            runValidators: true,
-        });
+        const updatedProject = await projectModel.findByIdAndUpdate(
+            id,
+            { $set: updateData },
+            { new: true, runValidators: true }
+        );
         
         if (!updatedProject) {
             return res.status(500).json({ success: false, message: "Failed to update project" });
         }
         
-        res.json({ success: true, message: "Project Updated Successfully", data: updatedProject });
+        res.json({ 
+            success: true, 
+            message: "Project Updated Successfully", 
+            data: updatedProject 
+        });
     } catch (err) {
-        console.log(err);
-        res.status(500).json({ success: false, message: "Error in updating project" })
+        console.error('Error updating project:', err);
+        res.status(500).json({ 
+            success: false, 
+            message: "Error in updating project",
+            error: process.env.NODE_ENV === 'development' ? err.message : undefined
+        });
     }
 }
 
