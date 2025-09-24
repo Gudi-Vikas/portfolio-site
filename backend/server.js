@@ -52,6 +52,6 @@ connectDB();
 app.use("/api/auth", authRouter);
 app.use("/api/skills", skillRouter);
 app.use("/api/projects", projectRouter);
-app.use("/api", messagesRouter);
+app.use("/api/messages", messagesRouter);
 
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));

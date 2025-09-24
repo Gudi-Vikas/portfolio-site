@@ -31,19 +31,33 @@ const Messages = ({ url }) => {
     const base = url || '';
     const full = joinUrl(base, API_PATH);
 
+    // Create axios instance with default headers
+    const api = axios.create({
+      baseURL: base,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('admin_token') || ''}`
+      }
+    });
+
     return {
       getMessages: async (signal) => {
-        const response = await axios.get(full, { signal });
+        const response = await api.get(API_PATH, { signal });
         return response.data;
       },
       updateMessageStatus: async (id, statusData, signal) => {
-        const urlPatch = joinUrl(full, `${id}/status`);
-        const response = await axios.patch(urlPatch, statusData, { signal, headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')||''}` } });
+        const response = await api.patch(
+          `${API_PATH}/${id}/status`,
+          statusData,
+          { signal }
+        );
         return response.data;
       },
       deleteMessage: async (id, signal) => {
-        const urlDel = joinUrl(full, `${id}`);
-        const response = await axios.delete(urlDel, { signal, headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')||''}` } });
+        const response = await api.delete(
+          `${API_PATH}/${id}`,
+          { signal }
+        );
         return response.data;
       }
     };
