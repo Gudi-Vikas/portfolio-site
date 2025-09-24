@@ -21,26 +21,29 @@ const __dirname = path.dirname(__filename);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// CORS configuration
-const corsOptions = {
-  origin: (origin, callback) => {
-    const allowedOrigins = process.env.CORS_ORIGINS 
-      ? process.env.CORS_ORIGINS.split(',').map(s => s.trim()).filter(Boolean)
-      : [];
-    
-    if (!origin || allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-};
+// CORS middleware with explicit route handling
+const allowedOrigins = process.env.CORS_ORIGINS 
+  ? process.env.CORS_ORIGINS.split(',').map(s => s.trim()).filter(Boolean)
+  : [];
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+// Simple CORS middleware
+app.use((req, res, next) => {
+  // Set CORS headers
+  const origin = req.headers.origin;
+  if (!origin || allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin || '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+  }
+
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
+  }
+
+  next();
+});
 
 // Static files
 app.use(
@@ -57,11 +60,30 @@ app.use(
 // Connect to database
 connectDB();
 
-// API Routes
-app.use('/api/auth', authRouter);
-app.use('/api/skills', skillRouter);
-app.use('/api/projects', projectRouter);
-app.use('/api/messages', messagesRouter);
+// API Routes - Order is important!
+console.log('Mounting routes...');
+
+// Mount routes one by one with error handling
+try {
+  // Public routes first
+  app.use('/api/auth', authRouter);
+  console.log('Auth routes mounted');
+  
+  // Then other routes
+  app.use('/api/skills', skillRouter);
+  console.log('Skills routes mounted');
+  
+  app.use('/api/projects', projectRouter);
+  console.log('Projects routes mounted');
+  
+  app.use('/api/messages', messagesRouter);
+  console.log('Messages routes mounted');
+  
+  console.log('All routes mounted successfully');
+} catch (error) {
+  console.error('Error mounting routes:', error);
+  process.exit(1);
+}
 
 // Health check endpoint
 app.get('/health', (req, res) => {
