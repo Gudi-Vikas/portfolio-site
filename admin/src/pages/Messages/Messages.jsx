@@ -29,21 +29,45 @@ const Messages = ({ url }) => {
   // memoized service with stable baseURL
   const messageService = useMemo(() => {
     const base = url || '';
-    const full = joinUrl(base, API_PATH);
-
-    // Create axios instance with default headers
     const api = axios.create({
       baseURL: base,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('admin_token') || ''}`
-      }
+      },
+      withCredentials: true
     });
+
+    // Request interceptor to add auth token
+    api.interceptors.request.use(
+      (config) => {
+        const token = localStorage.getItem('admin_token');
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
+
+    // Response interceptor for error handling
+    api.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        if (error.response?.status === 401) {
+          // Handle unauthorized
+          console.error('Unauthorized - Please log in again');
+        }
+        return Promise.reject(error);
+      }
+    );
 
     return {
       getMessages: async (signal) => {
         const response = await api.get(API_PATH, { signal });
-        return response.data;
+        return response.data?.data || []; // Ensure we return an array
       },
       updateMessageStatus: async (id, statusData, signal) => {
         const response = await api.patch(

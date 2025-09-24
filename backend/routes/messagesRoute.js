@@ -1,15 +1,20 @@
-import express from 'express'
-import { createMessage, deleteMessage, getMessages, updateMessageStatus } from '../controllers/messagesController.js'
-import { verifyAdmin } from '../middleware/authMiddleware.js'
+import express from 'express';
+import { 
+  createMessage, 
+  deleteMessage, 
+  getMessages, 
+  updateMessageStatus 
+} from '../controllers/messagesController.js';
+import { verifyAdmin } from '../middleware/authMiddleware.js';
 
-const messagesRouter = express.Router()
+const router = express.Router();
 
-// Public route
-messagesRouter.get("", verifyAdmin, getMessages)
-messagesRouter.post("/contact", createMessage)
+// Public routes
+router.get('/', verifyAdmin, getMessages);
+router.post('/contact', createMessage);
 
 // Admin routes (protected)
-messagesRouter.delete("/:id", verifyAdmin, deleteMessage)
-messagesRouter.patch("/:id/status", verifyAdmin, updateMessageStatus)
+router.delete('/:id', verifyAdmin, deleteMessage);
+router.patch('/:id/status', verifyAdmin, updateMessageStatus);
 
-export default messagesRouter
+export default router;

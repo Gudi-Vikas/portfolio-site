@@ -48,10 +48,34 @@ app.use(
 // DB
 connectDB();
 
-// public routes
-app.use("/api/auth", authRouter);
-app.use("/api/skills", skillRouter);
-app.use("/api/projects", projectRouter);
-app.use("/api/messages", messagesRouter);
+// API Routes
+app.use('/api/auth', authRouter);
+app.use('/api/skills', skillRouter);
+app.use('/api/projects', projectRouter);
+app.use('/api/messages', messagesRouter);
 
-app.listen(PORT, () => console.log(`Server started on ${PORT}`));
+// 404 handler
+app.use((req, res) => {
+  res.status(404).json({ success: false, message: 'Route not found' });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({ 
+    success: false, 
+    message: 'Internal server error',
+    error: process.env.NODE_ENV === 'development' ? err.message : undefined
+  });
+});
+
+// Start server
+const server = app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err) => {
+  console.error('Unhandled Rejection:', err);
+  server.close(() => process.exit(1));
+});
