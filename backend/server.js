@@ -11,24 +11,21 @@ import projectRouter from "./routes/projectRoute.js";
 import messagesRouter from "./routes/messagesRoute.js";
 import authRouter from "./routes/authRoute.js";
 
-// Initialize express app
 const app = express();
 const PORT = process.env.PORT || 4000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Basic middleware
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// CORS middleware with explicit route handling
+// CORS configuration
 const allowedOrigins = process.env.CORS_ORIGINS 
   ? process.env.CORS_ORIGINS.split(',').map(s => s.trim()).filter(Boolean)
   : [];
 
-// Simple CORS middleware
 app.use((req, res, next) => {
-  // Set CORS headers
   const origin = req.headers.origin;
   if (!origin || allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin || '*');
@@ -36,12 +33,8 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
   }
-
-  // Handle preflight requests
-  if (req.method === 'OPTIONS') {
-    return res.status(204).end();
-  }
-
+  
+  if (req.method === 'OPTIONS') return res.status(204).end();
   next();
 });
 

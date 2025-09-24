@@ -27,7 +27,7 @@ const Contact = ({url}) => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch(`${url}/api/contact`, {
+      const response = await fetch(`${url}/api/messages/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
